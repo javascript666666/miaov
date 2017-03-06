@@ -1,0 +1,269 @@
+/*主体*/
+.weiyun {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+/*头部*/
+.weiyun-header {
+  width: 100%;
+  height: 70px;
+  background: #ffffff;
+}
+
+/*功能按钮区*/
+.weiyun-contrls {
+  width: 100%;
+  height: 58px;
+  border-top: 1px slid #d0d9de;
+  border-bottom: 1px slid #d0d9de;
+  background-color: #ecf0f6;
+}
+
+/*主体部分*/
+.weiyun-body {
+  width: 100%;
+  flex: 1;
+  display: flex;
+}
+
+/*主体导航左侧菜单*/
+.weiyun-list-tree {
+  width: 260px;
+  box-sizing: border-box;
+  border-right: 1px solid #d0d9de;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 18px 0;
+}
+.weiyun-list-tree ul {
+  min-width: 260px;
+  box-sizing: border-box;
+  /*padding: 0 20px;*/
+}
+.weiyun-list-tree ul li {
+  cursor: pointer;
+}
+.weiyun-list-tree ul h2 {
+  float: left;
+  height: 20px;
+  font:   16px/20px arial;
+  padding: 4px 20px;
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+.weiyun-list-tree ul ul {
+  float: left;
+  margin-left: 20px;
+  display: none;
+}
+.weiyun-list-tree ul ul.active {
+  display: block;
+}
+.weiyun-list-tree ul h2:hover {
+  border: 2px solid rgba(130, 189, 227, 0.8);
+  background-color: rgba(130, 189, 227, 0.4)
+}
+.weiyun-list-tree ul h2 span.add {
+  width: 10px;
+  height: 10px;
+  background: url(../img/folder-tree.png) no-repeat 0 -50px;
+  margin-right: 10px;
+  transform: rotate(-90deg);
+}
+.weiyun-list-tree ul h2 span.active {
+  transform: rotate(0deg);
+}
+.weiyun-list-tree ul h2 i.add {
+  width: 16px;
+  height: 16px;
+  background: url(../img/folder-tree.png) no-repeat 0 0;
+  margin-right: 10px;
+}
+.weiyun-list-tree ul h2 i.active {
+  background: url(../img/folder-tree.png) no-repeat 0 -24px;
+}
+
+/*主体文件区域*/
+.weiyun-list-container {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/*导航栏区域*/
+.weiyun-list-navs {
+  width: 100%;
+  height: 48px;
+  border-bottom: 2px solid #d0d9de;
+  display: flex;
+}
+/*导航菜单全选按钮*/
+.weiyun-list-navs .file-select-all {
+  width: 60px;
+  height: 100%;
+  position: relative;
+}
+.weiyun-list-navs .file-checkbox-all {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  border: 1px solid #d0d9de;
+  cursor: pointer;
+}
+.weiyun-list-navs .file-checkbox-all.active {
+  background: #d0d9de url(../img/folder-tree.png) no-repeat 3px -100px;
+}
+/*导航显示区域*/
+.weiyun-list-navs .file-navs-list {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+.weiyun-list-navs .file-navs-list span {
+  float: left;
+  height: 48px;
+  padding: 0 16px;
+  position: relative;
+  margin-right: 10px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 48px;
+  cursor: pointer;
+}
+
+.weiyun-list-navs .file-navs-list span:after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  top: 0;
+  right: -20px;
+  background: url(../img/folder-tree.png) no-repeat 0 -58px;
+}
+.weiyun-list-navs .file-navs-list span.active {
+  border-bottom: 1px solid #55addc;
+  color: #55addc;
+}
+.weiyun-list-navs .file-navs-list span:hover {
+  transition: 0.5s;
+  color: red;
+  border-bottom: 1px solid #55addc;
+}
+
+/*文件显示区域*/
+.weiyun-list-file {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.weiyun-file {
+  width: 180px;
+  height: 180px;
+  float: left;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 8px;
+  margin: 40px;
+  margin-bottom: 0;
+  position: relative;
+  background-color: #ebeff0;
+}
+.weiyun-file:hover {
+  border: 1px solid #55addc;
+  background-color: #ffffff;
+}
+.weiyun-file .file-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  border: 1px solid #55addc;
+  display: none;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+.weiyun-file:hover .file-checkbox {
+  display: block;
+}
+.weiyun-file .file-checkbox.active {
+  background: #55addc url(../img/folder-tree.png) no-repeat 3px -100px;
+}
+.weiyun-file .file-img {
+  width: 80px;
+  height: 72px;
+  background: url(../img/file.png) no-repeat 0 0;
+  position: absolute;
+  left: 50px;
+  top: 32px;
+}
+.weiyun-file .file-name {
+  width: 120px;
+  height: 30px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 30px;
+  top: 122px;
+  cursor: default;
+}
+.weiyun-file .file-name .file-show-name {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font: 16px/1em Arial;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.weiyun-file .file-name .file-change-name {
+  display: none;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #55addc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
