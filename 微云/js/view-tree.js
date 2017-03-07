@@ -4,41 +4,57 @@
  * @param  {number} id   对应数据id用来添加class
  * @return {undefined}      
  */
+ 
 function createTree(data, id){
-
-  var parentNode = document.querySelector('.weiyun-outer-menu');
-  parentNode.innerHTML = '';
-  parentNode.innerHTML = createTreeHtml(data, id);
-  
-  // 后期改成事件委托
-  var menuTitle = parentNode.getElementsByTagName('h2');
-  for(var i=0; i<menuTitle.length; i++){
-    menuTitle[i].onclick = function (){
-      var id = this.dataset.id * 1;
-      // createFiles(data, id);
-      // createFileNavs(data, id);
-      // createTree(data, id);
-      viewHtml(data, id);
-    };
+  var str = '';
+  for(var i=0; i<data.length; i++){
+    str += `<li class="clear""> 
+             <h2 class="${data[i].id === id ? 'active' : ''}" data-Id="${data[i].id}" data-pid="${data[i].pId}">
+               <span class="${data[i].child ? 'add' : ''} active"></span>
+               <i class="add active"></i>
+               ${data[i].name}
+             </h2>`;
+    str += data[i].child ?`<ul>${createTree(data[i].child, id)}</ul>` : '';
+    str += '</li>';
   }
-  
-  // 生成左侧树形菜单
-  function createTreeHtml(data, id){
-    var str = '';
-    for(var i=0; i<data.length; i++){
-      str += `<li class="clear""> 
-                <h2 class="${data[i].id === id ? 'active' : ''}" data-Id="${data[i].id}" data-pid="${data[i].pId}">
-                  <span class="${data[i].child ? 'add' : ''} active"></span>
-                  <i class="add active"></i>
-                  ${data[i].name}
-                </h2>`;
-      str += data[i].child ?`<ul>${createTreeHtml(data[i].child, id)}</ul>` : '';
-      str += '</li>';
-    }
-    str += ''
-    return str;
-  }
+  str += ''
+  return str;
 }
+// function createTree(data, id){
+// 
+//   var parentNode = document.querySelector('.weiyun-outer-menu');
+//   parentNode.innerHTML = '';
+//   parentNode.innerHTML = createTreeHtml(data, id);
+//   
+//   // 后期改成事件委托
+//   var menuTitle = parentNode.getElementsByTagName('h2');
+//   for(var i=0; i<menuTitle.length; i++){
+//     menuTitle[i].onclick = function (){
+//       var id = this.dataset.id * 1;
+//       // createFiles(data, id);
+//       // createFileNavs(data, id);
+//       // createTree(data, id);
+//       viewHtml(data, id);
+//     };
+//   }
+//   
+//   // 生成左侧树形菜单
+//   function createTreeHtml(data, id){
+//     var str = '';
+//     for(var i=0; i<data.length; i++){
+//       str += `<li class="clear""> 
+//                 <h2 class="${data[i].id === id ? 'active' : ''}" data-Id="${data[i].id}" data-pid="${data[i].pId}">
+//                   <span class="${data[i].child ? 'add' : ''} active"></span>
+//                   <i class="add active"></i>
+//                   ${data[i].name}
+//                 </h2>`;
+//       str += data[i].child ?`<ul>${createTreeHtml(data[i].child, id)}</ul>` : '';
+//       str += '</li>';
+//     }
+//     str += ''
+//     return str;
+//   }
+// }
 
 
 

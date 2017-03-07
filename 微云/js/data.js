@@ -1,7 +1,3 @@
-var data = [
-  
-];
-
 var user_data = {
   files: [
     {

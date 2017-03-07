@@ -6,13 +6,14 @@
  */
 function createFiles(data, id){
   // 获取显示文件区域的父级
-  var parentNode = document.querySelector('.weiyun-list-file');
+  // var parentNode = document.querySelector('.weiyun-list-file');
   // 先清空已经存在的内容
-  parentNode.innerHTML = '';
+  // parentNode.innerHTML = '';
+  var nodes = [];
   // 获取当前层级的所有文件
   var files = wy.getChildrenById(data, id);
   // console.log(files);
-  if(!files) return;
+  if(!files) return nodes;
   for(var i=0, len = files.length; i<len; i++){
     // 创建文件最外层
     var weiyunFile = document.createElement('div');
@@ -46,43 +47,19 @@ function createFiles(data, id){
     weiyunFile.appendChild(fileCheckBox);
     weiyunFile.appendChild(fileImg);
     weiyunFile.appendChild(fileName);
+    
     // 将文件放入显示外层
-    parentNode.appendChild(weiyunFile);
+    // parentNode.appendChild(weiyunFile);
+    nodes.push(weiyunFile);
     //-------------------------------------------------------------
     // 事件部分
     
-    fileImg.onmouseup = function (){
-      // createFiles(data, this.Id);
-      // createFileNavs(data, this.Id);
-      // createTree(data, this.Id);
-      viewHtml(data, this.Id);
-    };
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    // fileImg.onmouseup = function (){
+    //   // createFiles(data, this.Id);
+    //   // createFileNavs(data, this.Id);
+    //   // createTree(data, this.Id);
+    //   viewHtml(data, this.Id);
+    // };
   }
+  return nodes;
 }
