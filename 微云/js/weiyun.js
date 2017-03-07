@@ -22,11 +22,8 @@ wy.getItemById = function (data, id){
   return item;
 }
 
-//根据指定的层级pId找到数据的所有子集
+//根据指定的层级的id找到数据的所有子集
 wy.getChildrenById = function (data, id){
-  if(id === 0){
-    return data;
-  }
   var parent = this.getItemById(data, id);
   if(parent){
     return parent.child;

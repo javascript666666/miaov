@@ -1,13 +1,16 @@
-
-createFiles(data, 0);
-
-function createFiles(data, pId){
+/**
+ * 创建文件区域的所有文件
+ * @param  {Object} data 数据
+ * @param  {number} pId  对应层级id
+ * @return {undefined}      
+ */
+function createFiles(data, id){
   // 获取显示文件区域的父级
   var parentNode = document.querySelector('.weiyun-list-file');
   // 先清空已经存在的内容
   parentNode.innerHTML = '';
   // 获取当前层级的所有文件
-  var files = wy.getChildrenById(data, pId);
+  var files = wy.getChildrenById(data, id);
   // console.log(files);
   if(!files) return;
   for(var i=0, len = files.length; i<len; i++){
@@ -49,8 +52,10 @@ function createFiles(data, pId){
     // 事件部分
     
     fileImg.onmouseup = function (){
-      createFiles(data, this.Id);
-      createFileNavs(data, this.Id);
+      // createFiles(data, this.Id);
+      // createFileNavs(data, this.Id);
+      // createTree(data, this.Id);
+      viewHtml(data, this.Id);
     };
     
     
