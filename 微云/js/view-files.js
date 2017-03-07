@@ -1,7 +1,9 @@
 
-createFiles(document.querySelector('.weiyun-list-file'), data, 0)
+createFiles(data, 0);
 
-function createFiles(parentNode, data, pId){
+function createFiles(data, pId){
+  // 获取显示文件区域的父级
+  var parentNode = document.querySelector('.weiyun-list-file');
   // 先清空已经存在的内容
   parentNode.innerHTML = '';
   // 获取当前层级的所有文件
@@ -47,8 +49,8 @@ function createFiles(parentNode, data, pId){
     // 事件部分
     
     fileImg.onmouseup = function (){
-      createFiles(document.querySelector('.weiyun-list-file'), data, this.Id);
-      createFileNavs(document.querySelector('.file-navs-list'), data, this.Id);
+      createFiles(data, this.Id);
+      createFileNavs(data, this.Id);
     };
     
     
