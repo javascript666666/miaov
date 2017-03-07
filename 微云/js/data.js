@@ -1,4 +1,5 @@
 var user_data = {
+  maxId: 148,
   files: [
     {
       name: '根目录',

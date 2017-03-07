@@ -1,77 +1,34 @@
-
-
-viewHtml(data, 0);
-
-
-// 树状菜单、导航、文件区域渲染入口
-function viewHtml(data, id){
-  viewFiles(data, id);
-  viewTree(data, id);
-  viewFileNavs(data, id);
+/**
+ * 页面渲染函数
+ * @param  {Object} data 数据
+ * @param  {Number} id   数字
+ * @return {undefined}    
+ */
+function createViewHtml(data, id){
+  createTreeHtml(data, id);
+  createFilsHtml(data, id);
+  createNavsHtml(data, id);
 }
 
-// ------------------------------------------------------------------
-
-// 文件区域父级
-function viewFiles(data, id){
-  var parentNode = document.querySelector('.weiyun-list-file');
-  parentNode.innerHTML = '';
-  createFiles(data, id).forEach(function(item, i) {
-    parentNode.appendChild(item);
-  });
-  var filesImgs = parentNode.querySelectorAll('.file-img');
-  for(var i=0; i<filesImgs.length; i++){
-    filesImgs[i].onclick = function (){
-      viewHtml(data, this.Id);
-    }
-  }
+// 生成左侧的树状菜单
+function createTreeHtml(data, id){
+  var html = createTreeMenu(data, id);
+  menuTreeParentNode.innerHTML = '';
+  menuTreeParentNode.innerHTML = html;
 }
 
-// 树形菜单区域
-function viewTree(data, id){
-  var parentNode = document.querySelector('.weiyun-outer-menu');
-  parentNode.innerHTML = '';
-  parentNode.innerHTML = createTree(data, id);
-  var menuTitles = parentNode.getElementsByTagName('h2');
-  for(var i=0; i<menuTitles.length; i++){
-    menuTitles[i].onclick = function (){
-      //console.log(this.dataset);
-      viewHtml(data, this.dataset.id * 1);
-    };
-  }
+// 生成所有的文件
+function createFilsHtml(data, id){
+  var items = wy.getChildrenById(data, id);
+  var nodeHtml = createFiles(items, id);
+  filesListParentNode.innerHTML = '';
+  filesListParentNode.innerHTML = nodeHtml;
 }
 
-// 渲染文件导航
-function viewFileNavs(data, id){
-  var parentNode = document.querySelector('.file-navs-list');
-  parentNode.innerHTML = '';
-  createFileNavs(data, id).forEach(function(item, i) {
-    parentNode.appendChild(item);
-  });
-  var navsItem = parentNode.getElementsByTagName('span');
-  for(var i=0; i<navsItem.length; i++){
-    navsItem[i].onclick = function (){
-      // console.log(this.Id);
-      viewHtml(data, this.Id);
-    };
-  }
+// 生成文件导航菜单
+function createNavsHtml(data, id){
+  var items = wy.getParentsById(data, id);
+  var navHtml = createFilesNav(items, id);
+  filesNavParentNode.innerHTML = '';
+  filesNavParentNode.innerHTML = navHtml;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

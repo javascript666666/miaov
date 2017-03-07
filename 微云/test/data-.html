@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <style>
+    .box {
+      width: 200px;
+      height: 50px;
+      background: skyblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" data-id="1" data-p-Id="0"></div>
+  <script>
+    var box = document.querySelector('.box');
+    // 元素.dataset 可以获取到自定义属性data-的所有的集合
+    console.log(box.dataset);
+    
+  </script>
+</body>
+</html>
