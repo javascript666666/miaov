@@ -6,6 +6,8 @@ var wy = {};
 
 // 根据id找到指定的数据 
 wy.getItemById = function (data, id){
+  
+  qu(:root+id)
   var item = null;
   for(var i=0; i<data.length; i++){
     if(data[i].id === id){
