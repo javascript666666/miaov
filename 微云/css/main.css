@@ -49,6 +49,7 @@
 }
 .weiyun-list-tree ul li {
   cursor: pointer;
+  margin: 2px 0;
 }
 .weiyun-list-tree ul h2 {
   float: left;
@@ -70,7 +71,7 @@
 }
 .weiyun-list-tree ul ul {
   float: left;
-  margin-left: 10px;
+  margin-left: 20px;
   display: -none;
 }
 .weiyun-list-tree ul ul.active {
